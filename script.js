@@ -85,6 +85,11 @@ function addText(text){
   $('.note').last().after("<div id=\"notes\" class=\"note\">"+text+"</div>");
   $('.note').last().width(noteWdth);
   $('.note').last().height(nodeHt);
+  $('.note').last().hide();
+  $('.note').last().css("margin-top","80%");
+ $('.note').last().fadeIn("slow", function(){});
+ $('.note').last().animate({'margin-top': '10px'}, 1000, 'easeOutExpo');
+
 
 }
 function increment()
