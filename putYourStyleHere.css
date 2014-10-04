@@ -4,17 +4,19 @@ html{
 body {
 	    overflow:hidden;
         height: 100%;
-        background:rgba(0,0,50,0.7);
+        background:rgba(200,200,200, 0.7);
 	  }
 #page
 {
 	position: absolute;
 	top: 2%;
 	left: 4%;
-	height: 50px;
-	width: 150px;
-	background-color: green;
+	height: 40px;
+	/*width: 150px;*/
+    padding: 0px 5px 0px 5px;
+	background:rgba(0,0,0, 0.1);
 	z-index: 2;
+    vertical-align: center;
 }
 div
 {
@@ -47,4 +49,5 @@ div
     margin-right: 10px;
     background-color: #FF0000;
     float:left;
+    box-shadow: 0px 7px 10px 5px #111111;
 }
