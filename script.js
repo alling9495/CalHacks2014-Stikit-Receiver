@@ -77,7 +77,7 @@ function addText(text){
   notes[notes.length] = text;
   $(".note").last().after("<div id=\"notes\" class=\"note\">"+text+"</div>");
   $('.note').width(noteWdth);
-  $('.note').last().height($('.note').width()*1.75);
+  $('.note').last().height($('#container').height());
   maxNumber++;
   number = maxNumber;
   displayText(text);
