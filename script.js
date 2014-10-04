@@ -1,6 +1,6 @@
 var number = 1;
 var maxNumber = 1;
-
+var notes = ['Talk To Me'];
 window.onload = function(){
         cast.receiver.logger.setLevelValue(0);
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
@@ -55,16 +55,25 @@ window.onload = function(){
       
 // utility function to display the text message in the input field
 function displayText(text) {
+  notes[notes.length] = text;
   console.log(text);
   document.getElementById("message").innerHTML=text;
   window.castReceiverManager.setApplicationState(text);
+  updatePage();
 };
+function addText(text){
+  notes[notes.length] = text;
+  maxNumber++;
+  number = maxNumber;
+  displayText(text);
 
+}
 function increment()
 {
-  number++;
-  if(number > maxNumber)
-    maxNumber++;
+  if(number < maxNumber){
+    number++;
+    displayText(notes[number-1]);
+  }
 }
 
 function decrement()
@@ -72,6 +81,7 @@ function decrement()
   if(number > 1)
   {
     number--;
+    displayText(notes[number-1]);
   }
 }
 
