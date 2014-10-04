@@ -65,9 +65,16 @@ function displayText(text) {
   //document.getElementById("message").innerHTML=text;
   window.castReceiverManager.setApplicationState(text);
 };
+function focusOn(numNote){
+  number = numNote;
+  updatePage();
+  updateDivOffset();
+};
+
 function addText(text){
   notes[notes.length] = text;
-  #(".note").last().append("<div id=\"notes\" class=\"note\">"+text+"</div>");
+  $(".note").last().after("<div id=\"notes\" class=\"note\">"+text+"</div>");
+  $('.note').last().height($('.note').width());
   maxNumber++;
   number = maxNumber;
   displayText(text);
