@@ -53,8 +53,10 @@ window.onload = function(){
         window.castReceiverManager.start({statusText: "Application is starting"});
         console.log('Receiver Manager started');
         updatePage();
-        $('.note').height($('.note').width());
-        noteWdth = $('#container').width()/3;
+        noteWdth = $('#container').width()/5;
+        $('.note').width(noteWdth);
+        $('.note').height($('.note').width()*1.75);
+        
         updateDivOffset();
       };
 
@@ -120,6 +122,6 @@ function updatePage()
 function updateDivOffset()
 {
   var offset = $('#container').offset()
-  $('#container').width(noteWdth*maxNumber);
-  $('#container').animate({'marginLeft':noteWdth*2-number*noteWdth});
+  $('#container').width(noteWdth*(maxNumber+1));
+  $('#container').animate({'marginLeft':noteWdth*3-number*noteWdth});
 }

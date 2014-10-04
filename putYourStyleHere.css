@@ -22,19 +22,18 @@ div
    /* display: table-cell;*/
     vertical-align:middle;
     color:#FFFFFF;
-    background-color:#000050;
     font-weight:bold;
     font-family:Verdana, Geneva, sans-serif;
-    font-size:40px;
+    font-size:30px;
 }
 .noteContainer
 {
-
+    padding-top: 100px;
 }
 .note{
     max-width: 300px;
-    margin: 50px;
-    margin-right: 50px;
+    margin: 10px;
+    margin-right: 10px;
     background-color: #FF0000;
     float:left;
 }
