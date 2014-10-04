@@ -2,6 +2,7 @@ var number = 1;
 var maxNumber = 4;
 var notes = ['Talk To Me'];
 var noteWdth = 0;
+var nodeHt=0;
 window.onload = function(){
 
         cast.receiver.logger.setLevelValue(0);
@@ -54,8 +55,9 @@ window.onload = function(){
         console.log('Receiver Manager started');
         updatePage();
         noteWdth = $('#container').width()/5;
+        nodeHt = $('#container').height()*0.8;
         $('.note').width(noteWdth);
-        $('.note').height($('.note').width()*1.75);
+        $('.note').height(nodeHt);
         
         updateDivOffset();
       };
@@ -75,14 +77,14 @@ function focusOn(numNote){
 
 function addText(text){
   notes[notes.length] = text;
-  $(".note").last().after("<div id=\"notes\" class=\"note\">"+text+"</div>");
-  $('.note').width(noteWdth);
-  $('.note').last().height($('#container').height());
   maxNumber++;
   number = maxNumber;
   displayText(text);
   updatePage();
   updateDivOffset();
+  $('.note').last().after("<div id=\"notes\" class=\"note\">"+text+"</div>");
+  $('.note').last().width(noteWdth);
+  $('.note').last().height(nodeHt);
 
 }
 function increment()
@@ -127,6 +129,6 @@ function updatePage()
 function updateDivOffset()
 {
   var offset = $('#container').offset();
-  $('#container').width(noteWdth*(maxNumber+1));
+  $('#container').width((noteWdth+20)*(maxNumber+1));
   $('#container').animate({'marginLeft':noteWdth*2-number*noteWdth});
 }
