@@ -1,7 +1,9 @@
 var number = 1;
-var maxNumber = 1;
+var maxNumber = 4;
 var notes = ['Talk To Me'];
+var noteWdth = 0;
 window.onload = function(){
+
         cast.receiver.logger.setLevelValue(0);
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
         console.log('Starting Receiver Manager');
@@ -51,21 +53,26 @@ window.onload = function(){
         window.castReceiverManager.start({statusText: "Application is starting"});
         console.log('Receiver Manager started');
         updatePage();
+        $('.note').height($('.note').width());
+        noteWdth = $('#container').width()/3;
+        updateDivOffset();
       };
-      
+
 // utility function to display the text message in the input field
 function displayText(text) {
   notes[notes.length] = text;
   console.log(text);
-  document.getElementById("message").innerHTML=text;
+  //document.getElementById("message").innerHTML=text;
   window.castReceiverManager.setApplicationState(text);
-  updatePage();
 };
 function addText(text){
   notes[notes.length] = text;
+  #(".note").last().append("<div id=\"notes\" class=\"note\">"+text+"</div>");
   maxNumber++;
   number = maxNumber;
   displayText(text);
+  updatePage();
+  updateDivOffset();
 
 }
 function increment()
@@ -88,16 +95,24 @@ function decrement()
 $("#increment").click(function(){
   increment();
   updatePage();
+  updateDivOffset();
   console.log(number + "/" + maxNumber);
 });
 
 $("#decrement").click(function(){
   decrement();
   updatePage();
+  updateDivOffset();
   console.log(number + "/" + maxNumber);
 });
 
 function updatePage()
 {
   $('#page').text(number + "/" + maxNumber);
+}
+function updateDivOffset()
+{
+  var offset = $('#container').offset()
+  $('#container').width(noteWdth*maxNumber);
+  $('#container').animate({'marginLeft':noteWdth*2-number*noteWdth});
 }

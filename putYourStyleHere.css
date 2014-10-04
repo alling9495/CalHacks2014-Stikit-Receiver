@@ -27,3 +27,14 @@ div
     font-family:Verdana, Geneva, sans-serif;
     font-size:40px;
 }
+.noteContainer
+{
+
+}
+.note{
+    max-width: 300px;
+    margin: 50px;
+    margin-right: 50px;
+    background-color: #FF0000;
+    float:left;
+}
