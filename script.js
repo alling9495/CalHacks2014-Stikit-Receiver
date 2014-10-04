@@ -89,6 +89,8 @@ function increment()
   if(number < maxNumber){
     number++;
     displayText(notes[number-1]);
+    updatePage();
+  updateDivOffset();
   }
 }
 
@@ -99,21 +101,23 @@ function decrement()
     number--;
     displayText(notes[number-1]);
   }
+  updatePage();
+  updateDivOffset();
 }
 
-$("#increment").click(function(){
-  increment();
-  updatePage();
-  updateDivOffset();
-  console.log(number + "/" + maxNumber);
-});
+// $("#increment").click(function(){
+//   increment();
+//   updatePage();
+//   updateDivOffset();
+//   console.log(number + "/" + maxNumber);
+// });
 
-$("#decrement").click(function(){
-  decrement();
-  updatePage();
-  updateDivOffset();
-  console.log(number + "/" + maxNumber);
-});
+// $("#decrement").click(function(){
+//   decrement();
+//   updatePage();
+//   updateDivOffset();
+//   console.log(number + "/" + maxNumber);
+// });
 
 function updatePage()
 {
@@ -121,7 +125,7 @@ function updatePage()
 }
 function updateDivOffset()
 {
-  var offset = $('#container').offset()
-  $('#container').width(noteWdth*(maxNumber+1));
-  $('#container').animate({'marginLeft':noteWdth*3-number*noteWdth});
+  var offset = $('#container').offset();
+  $('#container').width(noteWdth*maxNumber);
+  $('#container').animate({'marginLeft':noteWdth*2-number*noteWdth});
 }
