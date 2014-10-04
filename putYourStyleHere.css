@@ -1,13 +1,25 @@
 body {
 	    overflow:hidden;
 	  }
+#page
+{
+	position: absolute;
+	top: 2%;
+	left: 4%;
+	height: 50px;
+	width: 150px;
+	background-color: green;
+	z-index: 1;
+}
 div
 {
-    height:720PX;
-    width:1280PX;
+	margin-left: auto;
+	margin-right: auto;
+	width: 95%;
+    height: 520px;
     text-align:center;
     border:0px solid silver;
-    display: table-cell;
+   /* display: table-cell;*/
     vertical-align:middle;
     color:#FFFFFF;
     background-color:#000050;

@@ -1,4 +1,7 @@
-window.onload = function() {
+var number = 1;
+var maxNumber = 1;
+
+window.onload = function(){
         cast.receiver.logger.setLevelValue(0);
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
         console.log('Starting Receiver Manager');
@@ -47,11 +50,44 @@ window.onload = function() {
         // initialize the CastReceiverManager with an application status message
         window.castReceiverManager.start({statusText: "Application is starting"});
         console.log('Receiver Manager started');
+        updatePage();
       };
       
-      // utility function to display the text message in the input field
-      function displayText(text) {
-        console.log(text);
-        document.getElementById("message").innerHTML=text;
-        window.castReceiverManager.setApplicationState(text);
-      };
+// utility function to display the text message in the input field
+function displayText(text) {
+  console.log(text);
+  document.getElementById("message").innerHTML=text;
+  window.castReceiverManager.setApplicationState(text);
+};
+
+function increment()
+{
+  number++;
+  if(number > maxNumber)
+    maxNumber++;
+}
+
+function decrement()
+{
+  if(number > 1)
+  {
+    number--;
+  }
+}
+
+$("#increment").click(function(){
+  increment();
+  updatePage();
+  console.log(number + "/" + maxNumber);
+});
+
+$("#decrement").click(function(){
+  decrement();
+  updatePage();
+  console.log(number + "/" + maxNumber);
+});
+
+function updatePage()
+{
+  $('#page').text(number + "/" + maxNumber);
+}
