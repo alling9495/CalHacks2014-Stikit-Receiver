@@ -76,7 +76,8 @@ function focusOn(numNote){
 function addText(text){
   notes[notes.length] = text;
   $(".note").last().after("<div id=\"notes\" class=\"note\">"+text+"</div>");
-  $('.note').last().height($('.note').width());
+  $('.note').width(noteWdth);
+  $('.note').last().height($('.note').width()*1.75);
   maxNumber++;
   number = maxNumber;
   displayText(text);
@@ -126,6 +127,6 @@ function updatePage()
 function updateDivOffset()
 {
   var offset = $('#container').offset();
-  $('#container').width(noteWdth*maxNumber);
+  $('#container').width(noteWdth*(maxNumber+1));
   $('#container').animate({'marginLeft':noteWdth*2-number*noteWdth});
 }
