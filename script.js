@@ -77,7 +77,7 @@ function focusOn(numNote){
 
 function addText(dataJson){
   var data = JSON.parse(dataJson);
-  notes[notes.length] = data.text;
+  notes[notes.length] = data.statusText;
   maxNumber++;
   number = maxNumber;
   displayText(data.text);
