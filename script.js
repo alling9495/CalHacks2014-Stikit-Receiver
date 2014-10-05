@@ -75,7 +75,8 @@ function focusOn(numNote){
   updateDivOffset();
 };
 
-function addText(data){
+function addText(dataJson){
+  var data = JSON.parse(dataJson);
   notes[notes.length] = data.text;
   maxNumber++;
   number = maxNumber;
