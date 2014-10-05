@@ -1,8 +1,9 @@
-var number = 1;
-var maxNumber = 4;
-var notes = ['Talk To Me'];
+var number = 0;
+var maxNumber = 0;
+var notes = [];
 var noteWdth = 0;
 var nodeHt=0;
+var netHeight=0;
 window.onload = function(){
 
         cast.receiver.logger.setLevelValue(0);
@@ -42,7 +43,7 @@ window.onload = function(){
 
         // handler for the CastMessageBus message event
         window.messageBus.onMessage = function(event) {
-          alert('Message [' + event.senderId + ']: ' + JSON.stringify(event.data));
+          console.log('Message [' + event.senderId + ']: ' + event.data);
           // display the message from the sender
           addText(event.data);
           // inform all senders on the CastMessageBus of the incoming message event
@@ -56,15 +57,10 @@ window.onload = function(){
         updatePage();
         noteWdth = $('#container').width()/5;
         nodeHt = $('#container').height()*0.8;
-        $('.note').width(noteWdth);
-        $('.note').height(nodeHt);
-        
-        updateDivOffset();
       };
 
 // utility function to display the text message in the input field
 function displayText(text) {
-  notes[notes.length] = text;
   console.log(text);
   //document.getElementById("message").innerHTML=text;
   window.castReceiverManager.setApplicationState(text);
@@ -76,19 +72,26 @@ function focusOn(numNote){
 };
 
 function addText(text){
-  notes[notes.length] = text;
+
+
   maxNumber++;
   number = maxNumber;
   displayText(text);
-  updatePage();
-  updateDivOffset();
   $('.note').last().after("<div id=\"notes\" class=\"note\">"+text+"</div>");
   $('.note').last().width(noteWdth);
+<<<<<<< HEAD
+  $('.note').last().css("max-height",nodeHt);
+  netHeight += $('.note').last().height();
+  notes[notes.length] = {'text':text,'page':netHeight%nodeHt};
+  updatePage();
+  updateDivOffset();
+=======
   $('.note').last().height(nodeHt);
   $('.note').last().hide();
   $('.note').last().css("margin-top","80%");
  $('.note').last().fadeIn("slow", function(){});
  $('.note').last().animate({'margin-top': '10px'}, 1000, 'easeOutExpo');
+>>>>>>> ec6716a4f093d897d0b124c46b1ebd92d6bd7b91
 
 
 }
@@ -134,6 +137,6 @@ function updatePage()
 function updateDivOffset()
 {
   var offset = $('#container').offset();
-  $('#container').width((noteWdth+20)*(maxNumber+1));
-  $('#container').animate({'marginLeft':noteWdth*2-number*noteWdth});
+  $('#container').width((noteWdth+20)*((netHeight%nodeHt)+1));
+  $('#container').animate({'marginLeft':noteWdth*2-notes[number-1].page*noteWdth});
 }
