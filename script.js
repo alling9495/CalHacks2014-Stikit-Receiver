@@ -43,8 +43,22 @@ window.onload = function(){
         // handler for the CastMessageBus message event
         window.messageBus.onMessage = function(event) {
           console.log('Message [' + event.senderId + ']: ' + JSON.stringify(event.data));
+          //Add 0
+          //Delete 3
+          //Right 2
+          //Left 1
+          //
           // display the message from the sender
-          addText(event.data);
+          var data = JSON.parse(event.data);
+          if(data.command === 0){
+            addText(event.data);
+          }
+          else if(data.command === 1){
+            decrement();
+          }
+          else if(data.command === 1){
+            increment();
+          }
           // inform all senders on the CastMessageBus of the incoming message event
           // sender message listener will be invoked
           window.messageBus.send(event.senderId, event.data);
@@ -75,8 +89,7 @@ function focusOn(numNote){
   updateDivOffset();
 };
 
-function addText(dataJson){
-  var data = JSON.parse(dataJson);
+function addText(data){
   notes[notes.length] = data.text;
   maxNumber++;
   number = maxNumber;
@@ -88,7 +101,8 @@ function addText(dataJson){
   $('.note').last().height(nodeHt);
   $('.note').last().hide();
   $('.note').last().css("margin-top","80%");
-  //$('.note').css("background-color",'#'+data.colorInHex.split("$")[1]);
+  var colorHexCode = data.colorInHex.substr(0,data.colorInHex.length -2);
+  $('.note').css("background-color",colorHexCode);
  $('.note').last().fadeIn("slow", function(){});
  $('.note').last().animate({'margin-top': '10px'}, 1000, 'easeOutExpo');
 
@@ -98,10 +112,11 @@ function increment()
 {
   if(number < maxNumber){
     number++;
-    displayText(notes[number-1]);
-    updatePage();
-  updateDivOffset();
+
+
   }
+  updatePage();
+  updateDivOffset();
 }
 
 function decrement()
@@ -109,7 +124,7 @@ function decrement()
   if(number > 1)
   {
     number--;
-    displayText(notes[number-1]);
+
   }
   updatePage();
   updateDivOffset();
