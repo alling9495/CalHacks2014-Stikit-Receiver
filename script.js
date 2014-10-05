@@ -2,7 +2,7 @@ var number = 1;
 var maxNumber = 4;
 var notes = ['Talk To Me'];
 var noteWdth = 0;
-var nodeHt=0;
+var noteHt=0;
 window.onload = function(){
 
         cast.receiver.logger.setLevelValue(0);
@@ -69,10 +69,10 @@ window.onload = function(){
         console.log('Receiver Manager started');
         updatePage();
         noteWdth = $('#container').width()/5;
-        nodeHt = $('#container').height()*0.8;
+        noteHt = noteWdth*1.6; //golden number
         $('.note').width(noteWdth);
-        $('.note').height(nodeHt);
-
+        $('.note').height(noteHt);
+        
         updateDivOffset();
       };
 
@@ -98,7 +98,7 @@ function addText(data){
   updateDivOffset();
   $('.note').last().after("<div id=\"notes\" class=\"note\">"+data.text+"</div>");
   $('.note').last().width(noteWdth);
-  $('.note').last().height(nodeHt);
+  $('.note').last().height(noteHt);
   $('.note').last().hide();
   $('.note').last().css("margin-top","80%");
 
@@ -108,6 +108,13 @@ function addText(data){
 
 
 }
+
+function deleteNote()
+{
+  $(this).hide( "explode", {pieces: 25 }, 700);
+}
+
+
 function increment()
 {
   if(number < maxNumber){
@@ -128,6 +135,12 @@ function decrement()
   }
   updatePage();
   updateDivOffset();
+}
+
+function setNoteColor(r, g, b)
+{
+  var handle = "rgba(" + r + "," + b + "," + g + "," + "1.0)";
+  $('.note').css("background", handle);
 }
 
 // $("#increment").click(function(){
