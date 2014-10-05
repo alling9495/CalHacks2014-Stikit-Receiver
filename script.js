@@ -92,6 +92,13 @@ function addText(text){
 
 
 }
+
+function deleteNote()
+{
+  $(this).hide( "explode", {pieces: 25 }, 700);
+}
+
+
 function increment()
 {
   if(number < maxNumber){
