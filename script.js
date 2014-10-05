@@ -145,7 +145,7 @@ function chooseShadow(note)
 function deleteNote(note)
 {
   $(note).hide( "scale", 700,function(){$(this).remove()});
-  if(number > 1  && maxNumber > 1){
+  if(number > 1  || maxNumber <= 1){
     number = number - 1;
   }
   maxNumber = maxNumber - 1;
