@@ -50,8 +50,5 @@ div
     margin-right: 10px;
     background-color: #eeee22;
     float:left;
-    box-shadow: 0 10px 6px -6px #777;
-    /*box-shadow: 0 15px 10px #777;*/
-    /*box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;*/
-    /*box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;*/
+    
 }
