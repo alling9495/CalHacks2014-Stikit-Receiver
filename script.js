@@ -1,12 +1,9 @@
-var number = 1;
-var maxNumber = 4;
+var number = 0;
+var maxNumber = 0;
 var notes = ['Talk To Me'];
 var noteWdth = 0;
 var noteHt=0;
-var randomShadow = ["0 10px 6px -6px #777",
-                    "0 15px 10px #777",
-                    "inset 0 0 10px #000000",
-                    "0 8px 6px -6px black"];
+var numShadows =4 ;
 
 window.onload = function(){
         cast.receiver.logger.setLevelValue(0);
@@ -88,6 +85,12 @@ window.onload = function(){
         {
            chooseShadow($(this));
         });
+
+        window.setTimeout("addText({text:'Stikit: Collaborative sticky notes on a chromecast',colorInHex:'eeee22'})",2000);
+        window.setTimeout("addText({text:'Swipe up from your phone to post',colorInHex:'eeee22'})",4000);
+        window.setTimeout("addText({text:'Swipe left and right to scroll',colorInHex:'eeee22'})",6000);
+        window.setTimeout("addText({text:'Swipe down to delete the current note',colorInHex:'eeee22'})",8000);
+
       };
 
 // utility function to display the text message in the input field
@@ -110,7 +113,14 @@ function addText(data){
   displayText(data.text);
   updatePage();
   updateDivOffset();
-  $('.note').last().after("<div id=\"notes\" class=\"note\">"+data.text+"</div>");
+  if($('.note').length === 0){
+    console.log("Adding first");
+    $('#container').append("<div id=\"notes\" class=\"note\">"+data.text+"</div>")
+  }
+  else{
+    $('.note').last().after("<div id=\"notes\" class=\"note\">"+data.text+"</div>");
+  }
+
   $('.note').last().width(noteWdth);
   $('.note').last().height(noteHt);
   $('.note').last().hide();
@@ -127,14 +137,14 @@ function chooseShadow(note)
 {
    console.log("received" + note);
 
-  var num = Math.floor(Math.random() * randomShadow.length);
-  var type = randomShadow[num];
+  var num = Math.floor(Math.random() * numShadows) +1;
+  
   console.log(num);
-  note.css("box-shadow",type);
+  $(note).addClass('effect'+num);
 }
-function deleteNote()
+function deleteNote(note)
 {
-  $(this).hide( "scale", 700);
+  $(note).hide( "scale", 700,function(note){$(note).remove});
 }
 
 
