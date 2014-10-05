@@ -42,9 +42,9 @@ window.onload = function(){
 
         // handler for the CastMessageBus message event
         window.messageBus.onMessage = function(event) {
-          alert('Message [' + event.senderId + ']: ' + JSON.stringify(event.data));
+          console.log('Message [' + event.senderId + ']: ' + JSON.stringify(event.data));
           // display the message from the sender
-          //addText(event.data);
+          addText(event.data);
           // inform all senders on the CastMessageBus of the incoming message event
           // sender message listener will be invoked
           window.messageBus.send(event.senderId, event.data);
