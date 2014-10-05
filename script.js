@@ -198,5 +198,5 @@ function updateDivOffset()
 {
   var offset = $('#container').offset();
   $('#container').width((noteWdth+20)*(maxNumber+1));
-  $('#container').animate({'marginLeft':(noteWdth)*3-number*noteWdth});
+  $('#container').animate({'marginLeft':(noteWdth+20)*3-number*(noteWdth+20) - (noteWdth/8+10)});
 }
