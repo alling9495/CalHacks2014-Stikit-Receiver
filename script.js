@@ -101,10 +101,10 @@ function addText(data){
   $('.note').last().height(nodeHt);
   $('.note').last().hide();
   $('.note').last().css("margin-top","80%");
-  var colorHexCode = data.colorInHex.substr(0,data.colorInHex.length -2);
-  $('.note').css("background-color",colorHexCode);
- $('.note').last().fadeIn("slow", function(){});
- $('.note').last().animate({'margin-top': '10px'}, 1000, 'easeOutExpo');
+
+  $('.note').last().css("background-color",data.colorInHex);
+  $('.note').last().fadeIn("slow", function(){});
+  $('.note').last().animate({'margin-top': '10px'}, 1000, 'easeOutExpo');
 
 
 }
