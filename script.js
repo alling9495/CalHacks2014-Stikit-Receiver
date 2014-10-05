@@ -88,7 +88,7 @@ function addText(dataJson){
   $('.note').last().height(nodeHt);
   $('.note').last().hide();
   $('.note').last().css("margin-top","80%");
-  $('.note').css("background-color",'#'+data.colorInHex.split("$")[1]);
+  //$('.note').css("background-color",'#'+data.colorInHex.split("$")[1]);
  $('.note').last().fadeIn("slow", function(){});
  $('.note').last().animate({'margin-top': '10px'}, 1000, 'easeOutExpo');
 
