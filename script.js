@@ -119,6 +119,8 @@ function deleteNote(note)
   $(note).hide("explode", {pieces: 9 }, 700);
   number=number-1;
   maxNumber= maxNumber-1;
+  updatePage();
+  updateDivOffset();
 }
 
 
