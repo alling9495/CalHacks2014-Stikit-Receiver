@@ -130,6 +130,8 @@ function addText(data){
   $('.note').last().css("background-color",data.colorInHex);
   $('.note').last().fadeIn("slow", function(){});
   $('.note').last().animate({'margin-top': '10px'}, 1000, 'easeOutExpo');
+  $('.focused').removeClass("focused");
+  $('.note').last().addClass("focused");
 
 
 }
@@ -158,22 +160,23 @@ function increment()
 {
   if(number < maxNumber){
     number++;
-
-
-  }
-  updatePage();
+     updatePage();
   updateDivOffset();
+  }
+
 }
+ 
 
 function decrement()
 {
   if(number > 1)
   {
     number--;
+    updatePage();
+    updateDivOffset();
 
   }
-  updatePage();
-  updateDivOffset();
+  
 }
 
 function setNoteColor(r, g, b)
@@ -205,4 +208,11 @@ function updateDivOffset()
   var offset = $('#container').offset();
   $('#container').width((noteWdth+20)*(maxNumber+1));
   $('#container').animate({'marginLeft':(noteWdth+20)*3-number*(noteWdth+20) - (noteWdth/8+10)});
+
+  $('.focused').removeClass("focused");
+    if($('.note').length >= number && number > 0)
+    {
+      $('.note').eq(number-1).addClass("focused");
+    }
+  
 }

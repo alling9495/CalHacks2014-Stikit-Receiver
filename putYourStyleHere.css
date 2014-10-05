@@ -51,6 +51,7 @@ div
     margin-right: 10px;
     background-color: #eeee22;
     float:left;
+    /*opacity: 0.8;*/
     
 }
 
@@ -169,4 +170,13 @@ div
     background-color: #050505 ;
     color:#FFFFFF;
     font-family: font-family: Lobster, cursive;
+}
+
+.focused
+{
+    /*width: 24%;
+    height: 38%;*/
+    opacity: 1.0;
+    box-shadow: 0 15px 10px #777;
+    boder: 2px solid black;
 }
