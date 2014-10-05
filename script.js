@@ -60,7 +60,9 @@ window.onload = function(){
             increment();
           }
           else if(data.command === 3){
-            deleteNote();
+            if($('.note').length > 0){
+              deleteNote($('.note')[number-1]);
+            }
           }
           // inform all senders on the CastMessageBus of the incoming message event
           // sender message listener will be invoked
@@ -75,7 +77,7 @@ window.onload = function(){
         noteHt = noteWdth*1.6; //golden number
         $('.note').width(noteWdth);
         $('.note').height(noteHt);
-        
+
         updateDivOffset();
       };
 
@@ -112,9 +114,11 @@ function addText(data){
 
 }
 
-function deleteNote()
+function deleteNote(note)
 {
-  $(this).hide( "explode", {pieces: 25 }, 700);
+  note.hide( "explode", {pieces: 25 }, 700);
+  number--;
+  maxNumber--;
 }
 
 
@@ -168,5 +172,5 @@ function updateDivOffset()
 {
   var offset = $('#container').offset();
   $('#container').width((noteWdth+20)*(maxNumber+1));
-  $('#container').animate({'marginLeft':noteWdth*2-number*noteWdth});
+  $('#container').animate({'marginLeft':(noteWdth)*3-number*noteWdth});
 }
