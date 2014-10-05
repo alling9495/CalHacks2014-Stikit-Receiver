@@ -44,7 +44,7 @@ window.onload = function(){
         window.messageBus.onMessage = function(event) {
           alert('Message [' + event.senderId + ']: ' + JSON.stringify(event.data));
           // display the message from the sender
-          addText(event.data);
+          //addText(event.data);
           // inform all senders on the CastMessageBus of the incoming message event
           // sender message listener will be invoked
           window.messageBus.send(event.senderId, event.data);
@@ -58,7 +58,7 @@ window.onload = function(){
         nodeHt = $('#container').height()*0.8;
         $('.note').width(noteWdth);
         $('.note').height(nodeHt);
-        
+
         updateDivOffset();
       };
 
@@ -75,11 +75,11 @@ function focusOn(numNote){
   updateDivOffset();
 };
 
-function addText(text){
-  notes[notes.length] = text;
+function addText(data){
+  notes[notes.length] = data.text;
   maxNumber++;
   number = maxNumber;
-  displayText(text);
+  displayText(data.text);
   updatePage();
   updateDivOffset();
   $('.note').last().after("<div id=\"notes\" class=\"note\">"+text+"</div>");
@@ -87,6 +87,7 @@ function addText(text){
   $('.note').last().height(nodeHt);
   $('.note').last().hide();
   $('.note').last().css("margin-top","80%");
+  $('.note').css("background-color",data.colorInHex);
  $('.note').last().fadeIn("slow", function(){});
  $('.note').last().animate({'margin-top': '10px'}, 1000, 'easeOutExpo');
 
