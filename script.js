@@ -144,9 +144,11 @@ function chooseShadow(note)
 }
 function deleteNote(note)
 {
-  $(note).hide( "scale", 700,function(note){$(note).remove});
+  $(note).hide( "scale", 700,function(){$(this).remove()});
   number = number - 1;
   maxNumber = maxNumber - 1;
+  updatePage();
+  updateDivOffset();
 }
 
 
