@@ -59,6 +59,9 @@ window.onload = function(){
           else if(data.command === 2){
             increment();
           }
+          else if(data.command === 3){
+            deleteNote();
+          }
           // inform all senders on the CastMessageBus of the incoming message event
           // sender message listener will be invoked
           window.messageBus.send(event.senderId, event.data);
