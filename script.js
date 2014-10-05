@@ -3,8 +3,12 @@ var maxNumber = 4;
 var notes = ['Talk To Me'];
 var noteWdth = 0;
 var noteHt=0;
-window.onload = function(){
+var randomShadow = ["0 10px 6px -6px #777",
+                    "0 15px 10px #777",
+                    "inset 0 0 10px #000000",
+                    "0 8px 6px -6px black"];
 
+window.onload = function(){
         cast.receiver.logger.setLevelValue(0);
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
         console.log('Starting Receiver Manager');
@@ -60,6 +64,11 @@ window.onload = function(){
         $('.note').height(noteHt);
         
         updateDivOffset();
+
+        $('.note').each(function()
+        {
+           chooseShadow($(this));
+        });
       };
 
 // utility function to display the text message in the input field
@@ -86,16 +95,25 @@ function addText(text){
   $('.note').last().width(noteWdth);
   $('.note').last().height(noteHt);
   $('.note').last().hide();
+ chooseShadow( $('.note').last());
   $('.note').last().css("margin-top","80%");
  $('.note').last().fadeIn("slow", function(){});
  $('.note').last().animate({'margin-top': '10px'}, 1000, 'easeOutExpo');
 
 
 }
+function chooseShadow(note)
+{
+   console.log("received" + note);
 
+  var num = Math.floor(Math.random() * randomShadow.length);
+  var type = randomShadow[num];
+  console.log(num);
+  note.css("box-shadow",type);
+}
 function deleteNote()
 {
-  $(this).hide( "explode", {pieces: 25 }, 700);
+  $(this).hide( "scale", 700);
 }
 
 
