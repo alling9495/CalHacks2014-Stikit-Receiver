@@ -51,7 +51,7 @@ window.onload = function(){
           // display the message from the sender
           var data = JSON.parse(event.data);
           if(data.command === 0){
-            addText(event.data);
+            addText(data);
           }
           else if(data.command === 1){
             decrement();
