@@ -1,15 +1,23 @@
 html{
     height: 100%;
 }
-body {
-	    overflow:hidden;
-        height: 100%;
-        background-image: url("grey.png");
-        margin-top:0;
-        margin-left: 0;
-        margin-right: 0;
-	  }
-
+body 
+{
+    overflow:hidden;
+    height: 100%;
+    background-image: url("grey.png");
+    margin-top:0;
+    margin-left: 0;
+    margin-right: 0;
+}
+.title
+{
+    font-family: Lobster, Verdana, Geneva, sans-serif;
+}
+#pinPic
+{
+    float: left;
+}
 #page
 {
 	position: absolute;
