@@ -116,9 +116,9 @@ function addText(data){
 
 function deleteNote(note)
 {
-  note.hide( "explode", {pieces: 25 }, 700);
-  number--;
-  maxNumber--;
+  $(note).hide("explode", {pieces: 25 }, 700);
+  numbe-=1;
+  maxNumber-=1;
 }
 
 
