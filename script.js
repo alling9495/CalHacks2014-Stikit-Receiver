@@ -65,6 +65,9 @@ window.onload = function(){
               deleteNote($('.note')[number-1]);
             }
           }
+          else if(data.command === 4){
+            deleteAll();
+          }
           // inform all senders on the CastMessageBus of the incoming message event
           // sender message listener will be invoked
           window.messageBus.send(event.senderId, event.data);
@@ -111,8 +114,7 @@ function addText(data){
   maxNumber++;
   number = maxNumber;
   displayText(data.text);
-  updatePage();
-  updateDivOffset();
+ 
   if($('.note').length === 0){
     console.log("Adding first");
     $('#container').append("<div id=\"notes\" class=\"note\">"+data.text+"</div>")
@@ -129,9 +131,12 @@ function addText(data){
 
   $('.note').last().css("background-color",data.colorInHex);
   $('.note').last().fadeIn("slow", function(){});
-  $('.note').last().animate({'margin-top': '10px'}, 1000, 'easeOutExpo');
-  $('.focused').removeClass("focused");
-  $('.note').last().addClass("focused");
+  $('.note').last().animate({'margin-top': '10px'}, 1000, 'easeOutExpo',function(){
+    $('.focused').removeClass("focused");
+    $(this).addClass("focused");
+     updatePage();
+     updateDivOffset();
+  });
 
 
 }
@@ -140,7 +145,7 @@ function chooseShadow(note)
    console.log("received" + note);
 
   var num = Math.floor(Math.random() * numShadows) +1;
-  
+
   console.log(num);
   $(note).addClass('effect'+num);
 }
@@ -158,6 +163,21 @@ function deleteNote(note)
 
 }
 
+function deleteAll(){
+  $('.focused').removeClass("focused");
+  maxNumber = 0;
+  number = 0;
+  $('.note').last().hide("scale",700,function(){
+    $(this).remove()
+    updatePage();
+    updateDivOffset();
+  })
+  $('.note:not(:last)').hide( "scale", 700,function(){
+    $(this).remove();
+  });
+
+
+}
 
 function increment()
 {
