@@ -93,6 +93,7 @@ window.onload = function(){
         window.setTimeout("addText({text:'Swipe up from your phone to post',colorInHex:'eeee22'})",4000);
         window.setTimeout("addText({text:'Swipe left and right to scroll',colorInHex:'eeee22'})",6000);
         window.setTimeout("addText({text:'Swipe down to delete the current note',colorInHex:'eeee22'})",8000);
+      window.setTimeout("addText({text:'Double tap to clear all cards',colorInHex:'eeee22'})",10000);
 
       };
 
