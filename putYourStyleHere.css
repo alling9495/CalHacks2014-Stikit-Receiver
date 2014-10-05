@@ -14,7 +14,7 @@ body {
 	height: 40px;
 	/*width: 150px;*/
     padding: 0px 5px 0px 5px;
-	background:rgba(0,0,0, 0.1);
+	background:"grey.png";
 	z-index: 2;
     vertical-align: center;
 }
