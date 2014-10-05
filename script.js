@@ -80,7 +80,7 @@ function addText(dataJson){
   notes[notes.length] = data.statusText;
   maxNumber++;
   number = maxNumber;
-  displayText(data.text);
+  displayText(data.statusText);
   updatePage();
   updateDivOffset();
   $('.note').last().after("<div id=\"notes\" class=\"note\">"+text+"</div>");
