@@ -56,7 +56,7 @@ window.onload = function(){
           else if(data.command === 1){
             decrement();
           }
-          else if(data.command === 1){
+          else if(data.command === 2){
             increment();
           }
           // inform all senders on the CastMessageBus of the incoming message event
