@@ -125,7 +125,7 @@ function addText(data){
 
   $('.note').last().width(noteWdth);
   $('.note').last().height(noteHt);
-  $('.note').last().hide();
+
  chooseShadow( $('.note').last());
   $('.note').last().css("margin-top","80%");
 
