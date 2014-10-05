@@ -77,18 +77,18 @@ function focusOn(numNote){
 
 function addText(dataJson){
   var data = JSON.parse(dataJson);
-  notes[notes.length] = data.statusText;
+  notes[notes.length] = data.text;
   maxNumber++;
   number = maxNumber;
-  displayText(data.statusText);
+  displayText(data.text);
   updatePage();
   updateDivOffset();
-  $('.note').last().after("<div id=\"notes\" class=\"note\">"+data.statusText+"</div>");
+  $('.note').last().after("<div id=\"notes\" class=\"note\">"+data.text+"</div>");
   $('.note').last().width(noteWdth);
   $('.note').last().height(nodeHt);
   $('.note').last().hide();
   $('.note').last().css("margin-top","80%");
-  $('.note').css("background-color",data.colorInHex);
+  $('.note').css("background-color",'#'+data.colorInHex.split("$")[1]);
  $('.note').last().fadeIn("slow", function(){});
  $('.note').last().animate({'margin-top': '10px'}, 1000, 'easeOutExpo');
 
