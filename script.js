@@ -83,7 +83,7 @@ function addText(dataJson){
   displayText(data.statusText);
   updatePage();
   updateDivOffset();
-  $('.note').last().after("<div id=\"notes\" class=\"note\">"+text+"</div>");
+  $('.note').last().after("<div id=\"notes\" class=\"note\">"+data.statusText+"</div>");
   $('.note').last().width(noteWdth);
   $('.note').last().height(nodeHt);
   $('.note').last().hide();
